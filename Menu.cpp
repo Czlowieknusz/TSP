@@ -25,7 +25,7 @@ void Menu::MainMenu() {
     while (true) {
         PrintMainMenu();
         int userOption = -1;
-        while (userOption < 0 || userOption > 4) {
+        while (userOption < 0 || userOption > 5) {
             std::cout << "Your option: ";
             std::cin >> userOption;
         }
@@ -52,6 +52,14 @@ void Menu::MainMenu() {
             case 4: {
                 Test test;
                 test.MakeTests();
+                break;
+            }
+            case 5: {
+                std::cout << "From which vertex do you want to start? ";
+                unsigned startVertexHeldKarpProp;
+                std::cin >> startVertexHeldKarpProp;
+                std::cout << std::endl;
+                heldKarp.CalculatePathCorrectly(startVertexHeldKarpProp);
                 break;
             }
             default:

@@ -14,12 +14,6 @@ iostream
 vector
 -
 
-Q:/Studia/CLion/PEA---TSP-master/BruteForce.h
-AlgorithmTSP.h
-Q:/Studia/CLion/PEA---TSP-master/AlgorithmTSP.h
-vector
--
-
 Q:/Studia/CLion/PEA---TSP-master/DataLoader.h
 fstream
 -
@@ -31,48 +25,20 @@ limits
 -
 algorithm
 -
+numeric
+-
+list
+-
 Timer.h
 Q:/Studia/CLion/PEA---TSP-master/Timer.h
 
 Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
 AlgorithmTSP.h
 Q:/Studia/CLion/PEA---TSP-master/AlgorithmTSP.h
-vector
--
 limits
--
-
-Q:/Studia/CLion/PEA---TSP-master/Menu.cpp
-Menu.h
-Q:/Studia/CLion/PEA---TSP-master/Menu.h
-Test.h
-Q:/Studia/CLion/PEA---TSP-master/Test.h
-
-Q:/Studia/CLion/PEA---TSP-master/Menu.h
-BruteForce.h
-Q:/Studia/CLion/PEA---TSP-master/BruteForce.h
-HeldKarp.h
-Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
-
-Q:/Studia/CLion/PEA---TSP-master/Test.cpp
-Test.h
-Q:/Studia/CLion/PEA---TSP-master/Test.h
-BruteForce.h
-Q:/Studia/CLion/PEA---TSP-master/BruteForce.h
-HeldKarp.h
-Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
-vector
--
-
-Q:/Studia/CLion/PEA---TSP-master/Test.h
-string
 -
 
 Q:/Studia/CLion/PEA---TSP-master/Timer.h
 windows.h
 -
-
-Q:/Studia/CLion/PEA---TSP-master/main.cpp
-Menu.h
-Q:/Studia/CLion/PEA---TSP-master/Menu.h
 

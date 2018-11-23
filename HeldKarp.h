@@ -6,18 +6,30 @@
 #define PEA_HELDKARP_H
 
 #include "AlgorithmTSP.h"
-#include <vector>
 #include <limits>
 
-struct Permutation {
+struct Path {
     std::vector<unsigned> middleValues_;
     unsigned parentNode_;
     unsigned cost_;
+    unsigned successor_;
 
-    Permutation(unsigned cost, unsigned parent, std::vector<unsigned> &values) : cost_(cost), parentNode_(parent),
-                                                                               middleValues_(values) {}
+    Path(unsigned cost, unsigned parent, std::vector<unsigned> &values) : cost_(cost), parentNode_(parent),
+                                                                          middleValues_(values) {}
 
-    Permutation(unsigned cost, unsigned parent) : cost_(cost), parentNode_(parent) {}
+    Path(unsigned parent, unsigned successor, unsigned cost) : cost_(cost), parentNode_(parent),
+                                                               successor_(successor) {}
+// sprawdzic performance
+    Path() = default;
+
+    Path(const Path &permutation)
+            : middleValues_(permutation.middleValues_),
+              cost_(permutation.cost_),
+              parentNode_(permutation.cost_) {}
+
+    friend std::ostream &operator<<(std::ostream &os, const Path &);
+
+    friend bool operator<(const Path &p1, const Path &p2);
 };
 
 class HeldKarp : public AlgorithmTSP {
@@ -30,13 +42,29 @@ public:
 
     unsigned FindIndexOfOptimalPath(const std::vector<CalculatedPath> &);
 
-    std::vector<Permutation> permutations_;
+    std::vector<std::vector<unsigned> > permutations_;
+
+    std::vector<Path> paths_;
 
     void CreatePermutations(unsigned);
 
     void PrintPermutations();
 
     bool CheckIfAllVerticesAreVisited(const std::vector<bool> &);
+
+    double CalculatePathCorrectly(unsigned);
+
+    Path FindMinCostOfPermutation(const unsigned, const std::vector<unsigned> &);
+
+    void FindPredecessorsCost(Path &, unsigned, unsigned);
+
+    void CalculatePathInit();
+
+    Path FindMinPathFromVector(std::vector<Path>);
+
+    void InitVectorOfPermutations(unsigned);
+
+    bool CheckIfCorrectPath(const std::vector<unsigned> &, const std::vector<unsigned> &, unsigned);
 };
 
 
