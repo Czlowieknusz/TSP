@@ -14,7 +14,8 @@ bool operator<(const Path &p1, const Path &p2) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Path &obj) {
-    os << obj.successor_ << "; " << obj.parentNode_ << "; " << obj.cost_ << std::endl;
+    os << "Parent: " << obj.parentNode_ << "; Successor: " << obj.successor_ << "; Koszt: " << obj.cost_ << std::endl;
+    os << "Vector: ";
     for (auto i : obj.middleValues_) {
         os << i << "; ";
     }
@@ -145,30 +146,22 @@ double HeldKarp::CalculatePathCorrectly(unsigned startVertex) {
             listOfEndNodes.push_back(i);
         }
     }
-
-    for(const auto& i : permutations_) {
-        for (const auto j : i) {
-            std::cout << j << "; ";
-        }
-        std::cout << std::endl;
-    }
-
-    for (auto node : paths_) {
-        std::cout << node.cost_ << std::endl;
-    }
-
+    // zle! Dla kazdej permutacji permutacji ma byc path i na nich maja sie wykonac obliczenia
     for (const auto &permutation_vec : permutations_) {
         if (permutation_vec.empty()) {
             for (const auto node : listOfEndNodes) {
-                std::cout << "Pusty vector" << std::endl;
-                Path path(startVertex, node, graph_[startVertex][node]);
-                paths_.push_back(path);
+                Path path(startVertex, node, graph_[startVertex][node], permutation_vec);
+               // std::cout << " taka sciezka  " << path << std::endl;
+                paths_.push_back(std::move(path));
             }
         } else {
-            for (const auto node : listOfEndNodes) {
-                std::cout << "Vector z wartosciami: " << permutation_vec.size() << std::endl;
-                if (std::find(permutation_vec.begin(), permutation_vec.end(), node) != permutation_vec.end() && ) {
-                    Path path = FindMinCostOfPermutation(node, permutation_vec);
+            for (const auto successor : listOfEndNodes) {
+                //std::cout << "Vector z wartosciami: " << permutation_vec.size() << std::endl;
+                if (std::find(permutation_vec.begin(), permutation_vec.end(), successor) ==
+                    permutation_vec.end())/* cos tutaj chcialem zandowac */ {
+//                    std::cout << "Jebany node succesor to " << node << std::endl;
+                    Path path = FindMinCostOfPermutation(successor, permutation_vec);
+                    //std::cout << " taka sciezka  " << path << std::endl;
                     paths_.push_back(std::move(path));
                 }
             }
@@ -176,9 +169,9 @@ double HeldKarp::CalculatePathCorrectly(unsigned startVertex) {
     }
     double measured_time = timer.GetCounter();
     std::cout << "Measured time is equal to: " << measured_time << "s." << std::endl;
-    /*for(const auto& path : paths_) {
-        std::cout << path << std::endl;
-    }*/
+    //for (const auto &path : paths_) {
+  //      std::cout << "Calculated path is " << path << std::endl;
+//    }
     return measured_time;
 }
 
@@ -196,8 +189,9 @@ Path HeldKarp::FindMinCostOfPermutation(const unsigned successor, const std::vec
     unsigned pathIndex = 0;
     std::vector<Path> paths_vec(permutation_vec.size());
     for (const auto predecessor : permutation_vec) {
-        Path path(predecessor, successor, graph_[predecessor][successor]);
-        FindPredecessorsCost(path, successor, predecessor);
+        Path path(predecessor, successor, graph_[predecessor][successor], permutation_vec);
+        //std::cout << "Jebany w dupe kurwa mac path: " << path << std::endl;
+        FindPredecessorsCost(path, predecessor, successor);
         paths_vec[pathIndex] = path;
         ++pathIndex;
     }
@@ -213,30 +207,40 @@ Path HeldKarp::FindMinPathFromVector(std::vector<Path> paths_vec) {
             minPathIndex = index;
         }
     }
-    return paths_vec[minPathIndex];
+    /*std::cout << " kurwa jebana" << std::endl;
+    for (auto i : paths_vec) {
+        std::cout << i << "; ";
+    }
+    std::cout << std::endl;
+    */return paths_vec[minPathIndex];
 }
 
-void HeldKarp::FindPredecessorsCost(Path &modifiedPath, unsigned successor, unsigned predecessor) {
+void HeldKarp::FindPredecessorsCost(Path &modifiedPath, unsigned predecessor, unsigned successor) {
     for (const auto &path : paths_) {
         if (path.middleValues_.size() == modifiedPath.middleValues_.size() - 1) {
-            if (CheckIfCorrectPath(path.middleValues_, modifiedPath.middleValues_, successor)) {
+            if (CheckIfCorrectPath(path.middleValues_, modifiedPath.middleValues_, predecessor)) {
+                std::cout << "modPath: " << modif
                 modifiedPath.cost_ += path.cost_;
-                modifiedPath.parentNode_ = predecessor;
                 return;
             }
+        } else {
+     //       std::cout << "ROzmiar jebanego patha " << path.middleValues_.size() << " i kurway pierdolonej modifa "
+    //                  << modifiedPath.middleValues_.size() << std::endl;
         }
     }
 }
 
 bool HeldKarp::CheckIfCorrectPath(const std::vector<unsigned> &path, const std::vector<unsigned> &modifiedPath,
-                                  unsigned successor) {
+                                  unsigned predecessor) {
     auto nodePath = path.begin();
     for (const auto modIterator : modifiedPath) {
-        if (modIterator == successor) {
+        if (modIterator == predecessor) {
             continue;
         } else {
             if (modIterator != *nodePath) {
                 return false;
+            } else {
+                std::advance(nodePath, 1);
             }
         }
     }

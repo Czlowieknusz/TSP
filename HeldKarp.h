@@ -14,11 +14,14 @@ struct Path {
     unsigned cost_;
     unsigned successor_;
 
-    Path(unsigned cost, unsigned parent, std::vector<unsigned> &values) : cost_(cost), parentNode_(parent),
-                                                                          middleValues_(values) {}
+    Path(unsigned parent, unsigned successor, unsigned cost, std::vector<unsigned> values) : cost_(cost),
+                                                                                              parentNode_(parent),
+                                                                                              middleValues_(std::move(values)),
+                                                                                              successor_(successor) {}
 
     Path(unsigned parent, unsigned successor, unsigned cost) : cost_(cost), parentNode_(parent),
                                                                successor_(successor) {}
+
 // sprawdzic performance
     Path() = default;
 
