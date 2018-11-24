@@ -15,9 +15,10 @@ struct Path {
     unsigned successor_;
 
     Path(unsigned parent, unsigned successor, unsigned cost, std::vector<unsigned> values) : cost_(cost),
-                                                                                              parentNode_(parent),
-                                                                                              middleValues_(std::move(values)),
-                                                                                              successor_(successor) {}
+                                                                                             parentNode_(parent),
+                                                                                             middleValues_(
+                                                                                                     std::move(values)),
+                                                                                             successor_(successor) {}
 
     Path(unsigned parent, unsigned successor, unsigned cost) : cost_(cost), parentNode_(parent),
                                                                successor_(successor) {}
@@ -28,7 +29,8 @@ struct Path {
     Path(const Path &permutation)
             : middleValues_(permutation.middleValues_),
               cost_(permutation.cost_),
-              parentNode_(permutation.cost_) {}
+              parentNode_(permutation.parentNode_),
+              successor_(permutation.successor_) {}
 
     friend std::ostream &operator<<(std::ostream &os, const Path &);
 
@@ -39,35 +41,29 @@ class HeldKarp : public AlgorithmTSP {
 public:
     explicit HeldKarp(std::string);
 
-    double CalculatePath(unsigned) final;
-
-    CalculatedPath CalculatePath(unsigned, CalculatedPath &&);
-
-    unsigned FindIndexOfOptimalPath(const std::vector<CalculatedPath> &);
-
     std::vector<std::vector<unsigned> > permutations_;
 
     std::vector<Path> paths_;
+
+    std::vector<unsigned> indexesVec;
 
     void CreatePermutations(unsigned);
 
     void PrintPermutations();
 
-    bool CheckIfAllVerticesAreVisited(const std::vector<bool> &);
+    double CalculatePath(unsigned) final;
 
-    double CalculatePathCorrectly(unsigned);
-
-    Path FindMinCostOfPermutation(const unsigned, const std::vector<unsigned> &);
+    Path FindMinCostOfPermutation(unsigned, const std::vector<unsigned> &);
 
     void FindPredecessorsCost(Path &, unsigned, unsigned);
-
-    void CalculatePathInit();
 
     Path FindMinPathFromVector(std::vector<Path>);
 
     void InitVectorOfPermutations(unsigned);
 
     bool CheckIfCorrectPath(const std::vector<unsigned> &, const std::vector<unsigned> &, unsigned);
+
+    void PrintOptimalPath(unsigned, unsigned, unsigned);
 };
 
 

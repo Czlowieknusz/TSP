@@ -36,71 +36,6 @@ void HeldKarp::PrintPermutations() {
     }
 }
 
-double HeldKarp::CalculatePath(unsigned startVertex) {
-    if (startVertex >= 0 && startVertex < graphSize_) {
-        CalculatedPath calculatedPath(0, graphSize_);
-        calculatedPath.visitedVertices_[startVertex] = true;
-        calculatedPath.path_.push_back(startVertex);
-
-        Timer timer;
-        timer.StartCounter();
-        auto optimalPath = CalculatePath(startVertex, std::move(calculatedPath));
-        optimalPath.price_ += graph_[optimalPath.path_[graphSize_ - 1]][startVertex];
-        optimalPath.path_.push_back(startVertex);
-        double measured_time = timer.GetCounter();
-        std::cout << "Min price is equal to: " << optimalPath.price_ << std::endl;
-        std::cout << "Measured time is equal to: " << measured_time << "s." << std::endl;
-        for (const auto node : optimalPath.path_) {
-            std::cout << node << "; ";
-        }
-        std::cout << std::endl;
-        return measured_time;
-    } else {
-        std::cout << "Vertex is not a part of the graph" << std::endl;
-        return 0;
-    }
-}
-
-CalculatedPath
-HeldKarp::CalculatePath(unsigned startVertex, CalculatedPath &&calculatedPath) {
-    if (CheckIfAllVerticesAreVisited(calculatedPath.visitedVertices_)) {
-        return calculatedPath;
-    }
-    std::vector<CalculatedPath> pathsFound;
-    for (unsigned i = 0; i < graphSize_; ++i) {
-        if (!calculatedPath.visitedVertices_.at(i)) {
-            CalculatedPath currentCalculatedPath(calculatedPath);
-            currentCalculatedPath.visitedVertices_.at(i) = true;
-            currentCalculatedPath.path_.push_back(i);
-            CalculatedPath calculatedPathToPushBack = CalculatePath(i, std::move(currentCalculatedPath));
-            calculatedPathToPushBack.price_ += graph_[startVertex][i];
-            pathsFound.push_back(std::move(calculatedPathToPushBack));
-        }
-    }
-    return pathsFound[FindIndexOfOptimalPath(pathsFound)];
-}
-
-unsigned HeldKarp::FindIndexOfOptimalPath(const std::vector<CalculatedPath> &paths) {
-    unsigned indexOfOptimalPath = 0;
-    unsigned minPrice = std::numeric_limits<unsigned>::max();
-    for (unsigned i = 0; i < paths.size(); ++i) {
-        if (paths[i].price_ < minPrice) {
-            minPrice = paths[i].price_;
-            indexOfOptimalPath = i;
-        }
-    }
-    return indexOfOptimalPath;
-}
-
-bool HeldKarp::CheckIfAllVerticesAreVisited(const std::vector<bool> &visitedVertices) {
-    for (const auto isVisited : visitedVertices) {
-        if (!isVisited) {
-            return false;
-        }
-    }
-    return true;
-}
-
 void HeldKarp::CreatePermutations(unsigned startVertex) {
     if (graphSize_ > 0) {
         unsigned numberOfElements = 1;
@@ -132,7 +67,7 @@ void HeldKarp::InitVectorOfPermutations(unsigned startVertex) {
     }
 }
 
-double HeldKarp::CalculatePathCorrectly(unsigned startVertex) {
+double HeldKarp::CalculatePath(unsigned startVertex) {
     if (startVertex < 0 || startVertex >= graphSize_) {
         std::cout << "Vertex is not a part of graph" << std::endl;
         return 0.0f;
@@ -146,22 +81,27 @@ double HeldKarp::CalculatePathCorrectly(unsigned startVertex) {
             listOfEndNodes.push_back(i);
         }
     }
-    // zle! Dla kazdej permutacji permutacji ma byc path i na nich maja sie wykonac obliczenia
+    unsigned vectorSize = 0;
     for (const auto &permutation_vec : permutations_) {
         if (permutation_vec.empty()) {
+            indexesVec.push_back(0);
             for (const auto node : listOfEndNodes) {
                 Path path(startVertex, node, graph_[startVertex][node], permutation_vec);
-               // std::cout << " taka sciezka  " << path << std::endl;
                 paths_.push_back(std::move(path));
             }
+        } else if (permutation_vec.size() == graphSize_ - 1) {
+            indexesVec.push_back(paths_.size() - 1);
+            ++vectorSize;
+            Path path = FindMinCostOfPermutation(startVertex, permutation_vec);
+            paths_.push_back(std::move(path));
         } else {
+            if (permutation_vec.size() != vectorSize) {
+                indexesVec.push_back(paths_.size() - 1);
+                ++vectorSize;
+            }
             for (const auto successor : listOfEndNodes) {
-                //std::cout << "Vector z wartosciami: " << permutation_vec.size() << std::endl;
-                if (std::find(permutation_vec.begin(), permutation_vec.end(), successor) ==
-                    permutation_vec.end())/* cos tutaj chcialem zandowac */ {
-//                    std::cout << "Jebany node succesor to " << node << std::endl;
+                if (std::find(permutation_vec.begin(), permutation_vec.end(), successor) == permutation_vec.end()) {
                     Path path = FindMinCostOfPermutation(successor, permutation_vec);
-                    //std::cout << " taka sciezka  " << path << std::endl;
                     paths_.push_back(std::move(path));
                 }
             }
@@ -169,28 +109,16 @@ double HeldKarp::CalculatePathCorrectly(unsigned startVertex) {
     }
     double measured_time = timer.GetCounter();
     std::cout << "Measured time is equal to: " << measured_time << "s." << std::endl;
-    //for (const auto &path : paths_) {
-  //      std::cout << "Calculated path is " << path << std::endl;
-//    }
+    std::cout << "Calculated path is " << *(paths_.end() - 1) << std::endl;
+
     return measured_time;
 }
 
-/*
- *  Permutations zawiera vector wszystkich permutacji wraz z ich parentem(czyli tutaj niczym, i kosztem czyli tutaj niczym
- *  Tutaj dostajemy permutation.
- *  parent to indeks wierzcholka, z ktorego przeszlismy do nastepnego
- *  dla każdego wierzcholka w jego wnętrzu sprawdzamy koszt dostania sie do niego oraz przejsca z niego do nastepnego
- *  i odpalimy min
- */
 Path HeldKarp::FindMinCostOfPermutation(const unsigned successor, const std::vector<unsigned> &permutation_vec) {
-    /*if (permutation.middleValues_.empty()) {
-        //permutation.cost_ = graph_[startVertex][]
-    }*/
     unsigned pathIndex = 0;
     std::vector<Path> paths_vec(permutation_vec.size());
     for (const auto predecessor : permutation_vec) {
         Path path(predecessor, successor, graph_[predecessor][successor], permutation_vec);
-        //std::cout << "Jebany w dupe kurwa mac path: " << path << std::endl;
         FindPredecessorsCost(path, predecessor, successor);
         paths_vec[pathIndex] = path;
         ++pathIndex;
@@ -207,25 +135,18 @@ Path HeldKarp::FindMinPathFromVector(std::vector<Path> paths_vec) {
             minPathIndex = index;
         }
     }
-    /*std::cout << " kurwa jebana" << std::endl;
-    for (auto i : paths_vec) {
-        std::cout << i << "; ";
-    }
-    std::cout << std::endl;
-    */return paths_vec[minPathIndex];
+    return paths_vec[minPathIndex];
 }
 
 void HeldKarp::FindPredecessorsCost(Path &modifiedPath, unsigned predecessor, unsigned successor) {
     for (const auto &path : paths_) {
         if (path.middleValues_.size() == modifiedPath.middleValues_.size() - 1) {
             if (CheckIfCorrectPath(path.middleValues_, modifiedPath.middleValues_, predecessor)) {
-                std::cout << "modPath: " << modif
-                modifiedPath.cost_ += path.cost_;
-                return;
+                if (path.successor_ == modifiedPath.parentNode_) {
+                    modifiedPath.cost_ += path.cost_;
+                    return;
+                }
             }
-        } else {
-     //       std::cout << "ROzmiar jebanego patha " << path.middleValues_.size() << " i kurway pierdolonej modifa "
-    //                  << modifiedPath.middleValues_.size() << std::endl;
         }
     }
 }
@@ -245,4 +166,13 @@ bool HeldKarp::CheckIfCorrectPath(const std::vector<unsigned> &path, const std::
         }
     }
     return true;
+}
+
+void HeldKarp::PrintOptimalPath(Path &postPath, unsigned currentIndex, unsigned predecessor, unsigned successor) {
+    for (unsigned index = *(indexesVec.end()-1); ) {
+        if (CheckIfCorrectPath(postPath.middleValues_, path.middleValues_, predecessor)) {
+            std::cout << path.successor_ << "; ";
+            PrintOptimalPath(path, , predecessor);
+        }
+    }
 }

@@ -16,8 +16,6 @@ void Menu::PrintMainMenu() {
     std::cout << "2. Calculate path using Brute Force." << std::endl;
     std::cout << "3. Calculate path using Held-Karp." << std::endl;
     std::cout << "4. Test algorithms." << std::endl;
-    std::cout << "5. Properly hk." << std::endl;
-    std::cout << "6. How ." << std::endl;
     std::cout << "0. Finish executing program." << std::endl;
 }
 
@@ -25,7 +23,7 @@ void Menu::MainMenu() {
     while (true) {
         PrintMainMenu();
         int userOption = -1;
-        while (userOption < 0 || userOption > 5) {
+        while (userOption < 0 || userOption > 4) {
             std::cout << "Your option: ";
             std::cin >> userOption;
         }
@@ -44,22 +42,14 @@ void Menu::MainMenu() {
                 break;
             case 3:
                 std::cout << "From which vertex do you want to start? ";
-                unsigned startVertexHeldKarp;
-                std::cin >> startVertexHeldKarp;
+                unsigned startVertexHeldKarpProp;
+                std::cin >> startVertexHeldKarpProp;
                 std::cout << std::endl;
-                heldKarp.CalculatePath(startVertexHeldKarp);
+                heldKarp.CalculatePath(startVertexHeldKarpProp);
                 break;
             case 4: {
                 Test test;
                 test.MakeTests();
-                break;
-            }
-            case 5: {
-                std::cout << "From which vertex do you want to start? ";
-                unsigned startVertexHeldKarpProp;
-                std::cin >> startVertexHeldKarpProp;
-                std::cout << std::endl;
-                heldKarp.CalculatePathCorrectly(startVertexHeldKarpProp);
                 break;
             }
             default:
