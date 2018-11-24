@@ -109,8 +109,9 @@ double HeldKarp::CalculatePath(unsigned startVertex) {
     }
     double measured_time = timer.GetCounter();
     std::cout << "Measured time is equal to: " << measured_time << "s." << std::endl;
-    std::cout << "Calculated path is " << *(paths_.end() - 1) << std::endl;
-
+    std::cout << "Measured cost is equal to: " << (paths_.end() - 1)->cost_ << std::endl;
+    std::cout << startVertex << "; ";
+    PrintOptimalPath(*(paths_.end() - 1), indexesVec.size() - 1);
     return measured_time;
 }
 
@@ -168,11 +169,25 @@ bool HeldKarp::CheckIfCorrectPath(const std::vector<unsigned> &path, const std::
     return true;
 }
 
-void HeldKarp::PrintOptimalPath(Path &postPath, unsigned currentIndex, unsigned predecessor, unsigned successor) {
-    for (unsigned index = *(indexesVec.end()-1); ) {
-        if (CheckIfCorrectPath(postPath.middleValues_, path.middleValues_, predecessor)) {
-            std::cout << path.successor_ << "; ";
-            PrintOptimalPath(path, , predecessor);
+void HeldKarp::PrintOptimalPath(Path &postPath, unsigned indexOfIndexesVec) {
+    if (indexOfIndexesVec == indexesVec.size() - 1) {
+        std::cout << postPath.parentNode_ << "; ";
+        PrintOptimalPath(postPath, indexOfIndexesVec - 1);
+    } else if (indexOfIndexesVec == 0) {
+        return;
+    } else {
+         //   std::cout << "postPath: " << postPath << std::endl;
+        for (unsigned index = indexesVec[indexOfIndexesVec] + 1; index < indexesVec[indexOfIndexesVec + 1]; ++index) {
+           //           std::cout << "Path: " << paths_[index] << std::endl;
+            if (CheckIfCorrectPath(paths_[index].middleValues_, postPath.middleValues_, paths_[index].successor_)) {
+             //   std::cout << "Jak to?" << std::endl;
+                if (paths_[index].successor_ == postPath.parentNode_) {
+                    //        std::cout << "postPath: " << postPath << std::endl << "Path: " << paths_[index] << std::endl;
+                    std::cout << paths_[index].parentNode_ << "; ";
+                    PrintOptimalPath(paths_[index], indexOfIndexesVec - 1);
+                    return;
+                }
+            }
         }
     }
 }

@@ -24,20 +24,6 @@ Q:/Studia/CLion/PEA---TSP-master/DataLoader.h
 fstream
 -
 
-Q:/Studia/CLion/PEA---TSP-master/HeldKarp.cpp
-HeldKarp.h
-Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
-limits
--
-algorithm
--
-numeric
--
-list
--
-Timer.h
-Q:/Studia/CLion/PEA---TSP-master/Timer.h
-
 Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
 AlgorithmTSP.h
 Q:/Studia/CLion/PEA---TSP-master/AlgorithmTSP.h
@@ -49,10 +35,6 @@ BruteForce.h
 Q:/Studia/CLion/PEA---TSP-master/BruteForce.h
 HeldKarp.h
 Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
-
-Q:/Studia/CLion/PEA---TSP-master/Timer.h
-windows.h
--
 
 Q:/Studia/CLion/PEA---TSP-master/main.cpp
 Menu.h

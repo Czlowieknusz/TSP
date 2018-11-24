@@ -63,7 +63,7 @@ public:
 
     bool CheckIfCorrectPath(const std::vector<unsigned> &, const std::vector<unsigned> &, unsigned);
 
-    void PrintOptimalPath(unsigned, unsigned, unsigned);
+    void PrintOptimalPath(Path&, unsigned);
 };
 
 
