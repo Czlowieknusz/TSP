@@ -8,17 +8,14 @@
 #include <iostream>
 #include <vector>
 #include "tree.hh"
+#include <fstream>
 
 class Node;
 
 class Matrix {
 
 public:
-    Matrix(unsigned lMiast = 0);
-
-    Matrix(const Matrix &);
-
-    Matrix(std::ifstream &);
+    explicit Matrix(unsigned graphSize = 0);
 
     virtual ~Matrix();
 
@@ -26,24 +23,13 @@ public:
 
     void CloneMatrix(const Matrix &);
 
-    void ReadFromFile(std::ifstream &);
+    void ReadFromFile(std::string);
 
-    void WriteToFile(std::ofstream &);
-
-    void GenerateGraph(unsigned lMiast, bool symetria = true);
-
-    void GenerateToFile(std::ofstream &wyjscie, unsigned lMiast, double procent,
-                        bool nadpisanie = false);
-
-    void PrintGraph(bool noColor = false);
-
-    void BranchAndBound();
+    void BranchAndBound(unsigned);
 
     int GetValue(unsigned, unsigned);
 
-    unsigned GetGraphSize();
-
-    unsigned MinimalizeCost();
+    unsigned MinimizeCost();
 
     bool ReserveMemoryForGraph(unsigned vNumber = 0);
 
@@ -53,39 +39,19 @@ public:
     unsigned graphSize_;
     int **graph_;
 
-    unsigned zwrocMatrixMax();
+    int MinRow(unsigned);
 
-    unsigned zwrocKolumnaMax();
+    int MinColumn(unsigned);
 
-    int minWiersz(unsigned);
+    void SubtractFromRow(unsigned, int);
 
-    int minKolumna(unsigned);
+    void SubtractFromColumn(unsigned, int);
 
-    int minWiersz(unsigned, int &);
+    void SetRow(unsigned row, int value = -1);
 
-    int minKolumna(unsigned, int &);
+    void SetColumn(unsigned column, int value = -1);
 
-    int drugMinWiersz(unsigned);
-
-    int drugMinKolumna(unsigned);
-
-    void odejmijWiersz(unsigned, int);
-
-    void odejmijKolumna(unsigned, int);
-
-    void SetRow(unsigned wiersz, int wartosc = -1);
-
-    void SetColumn(unsigned kolumna, int wartosc = -1);
-
-    void SetValue(unsigned wiersz, unsigned kolumna, int wartosc = -1);
-
-    bool zredukuj(std::vector<Para> &, unsigned &);
-
-    unsigned dodajOstatniaPare(std::vector<Para> &);
-
-    long rysujBezPowt(bool *, unsigned);
-
-    static bool nastepnaPermutacja(unsigned *, unsigned);
+    void SetValue(unsigned row, unsigned column, int value = -1);
 
     static std::vector<bool> BuildVisited(tree<Node>::iterator, unsigned);
 

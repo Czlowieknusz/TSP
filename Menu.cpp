@@ -4,6 +4,7 @@
 
 #include "Menu.h"
 #include "Test.h"
+#include "Matrix.h"
 
 Menu::Menu(std::string fileName) : bruteForce(fileName), heldKarp(fileName) {
     MainMenu();
@@ -15,7 +16,7 @@ void Menu::PrintMainMenu() {
     std::cout << "1. Print loaded Graph." << std::endl;
     std::cout << "2. Calculate path using Brute Force." << std::endl;
     std::cout << "3. Calculate path using Held-Karp." << std::endl;
-    std::cout << "4. Test algorithms." << std::endl
+    std::cout << "4. Test algorithms." << std::endl;
     std::cout << "5. Calculate path using Branch and Bound." << std::endl;
     std::cout << "0. Finish executing program." << std::endl;
 }
@@ -52,14 +53,16 @@ void Menu::MainMenu() {
                 Test test;
                 test.MakeTests();
                 break;
-            case 5:
+            case 5: {
                 std::cout << "From which vertex do you want to start? ";
                 unsigned startVertexBnB;
                 std::cin >> startVertexBnB;
                 std::cout << std::endl;
-                //Matri
+                Matrix matrix;
+                matrix.ReadFromFile("tsp_10.txt");
+                matrix.BranchAndBound(0);
                 break;
-
+            }
             default:
                 break;
         }

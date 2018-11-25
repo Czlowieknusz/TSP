@@ -24,24 +24,36 @@ Q:/Studia/CLion/PEA---TSP-master/DataLoader.h
 fstream
 -
 
-Q:/Studia/CLion/PEA---TSP-master/HeldKarp.cpp
-HeldKarp.h
-Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
-limits
--
-algorithm
--
-numeric
--
-list
--
-Timer.h
-Q:/Studia/CLion/PEA---TSP-master/Timer.h
-
 Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
 AlgorithmTSP.h
 Q:/Studia/CLion/PEA---TSP-master/AlgorithmTSP.h
 limits
+-
+
+Q:/Studia/CLion/PEA---TSP-master/Matrix.cpp
+Matrix.h
+Q:/Studia/CLion/PEA---TSP-master/Matrix.h
+Node.h
+Q:/Studia/CLion/PEA---TSP-master/Node.h
+limits
+-
+tree_util.hh
+Q:/Studia/CLion/PEA---TSP-master/tree_util.hh
+time.h
+-
+memory.h
+-
+DataLoader.h
+Q:/Studia/CLion/PEA---TSP-master/DataLoader.h
+
+Q:/Studia/CLion/PEA---TSP-master/Matrix.h
+iostream
+-
+vector
+-
+tree.hh
+Q:/Studia/CLion/PEA---TSP-master/tree.hh
+fstream
 -
 
 Q:/Studia/CLion/PEA---TSP-master/Menu.cpp
@@ -49,6 +61,8 @@ Menu.h
 Q:/Studia/CLion/PEA---TSP-master/Menu.h
 Test.h
 Q:/Studia/CLion/PEA---TSP-master/Test.h
+Matrix.h
+Q:/Studia/CLion/PEA---TSP-master/Matrix.h
 
 Q:/Studia/CLion/PEA---TSP-master/Menu.h
 BruteForce.h
@@ -56,25 +70,41 @@ Q:/Studia/CLion/PEA---TSP-master/BruteForce.h
 HeldKarp.h
 Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
 
-Q:/Studia/CLion/PEA---TSP-master/Test.cpp
-Test.h
-Q:/Studia/CLion/PEA---TSP-master/Test.h
-BruteForce.h
-Q:/Studia/CLion/PEA---TSP-master/BruteForce.h
-HeldKarp.h
-Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
-vector
+Q:/Studia/CLion/PEA---TSP-master/Node.cpp
+Node.h
+Q:/Studia/CLion/PEA---TSP-master/Node.h
+
+Q:/Studia/CLion/PEA---TSP-master/Node.h
+iostream
 -
+Matrix.h
+Q:/Studia/CLion/PEA---TSP-master/Matrix.h
 
 Q:/Studia/CLion/PEA---TSP-master/Test.h
 string
 -
 
-Q:/Studia/CLion/PEA---TSP-master/Timer.h
-windows.h
+Q:/Studia/CLion/PEA---TSP-master/tree.hh
+cassert
+-
+memory
+-
+stdexcept
+-
+iterator
+-
+set
+-
+queue
+-
+algorithm
+-
+cstddef
 -
 
-Q:/Studia/CLion/PEA---TSP-master/main.cpp
-Menu.h
-Q:/Studia/CLion/PEA---TSP-master/Menu.h
+Q:/Studia/CLion/PEA---TSP-master/tree_util.hh
+iostream
+-
+tree.hh
+Q:/Studia/CLion/PEA---TSP-master/tree.hh
 

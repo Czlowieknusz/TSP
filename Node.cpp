@@ -23,8 +23,8 @@ Node::Node(Matrix &matrix, unsigned index) {
     index_ = index;
 }
 
-void Node::minimizeCost() {
-    downBoundary_ = matrix_.zminimalizujKoszt();
+void Node::MinimizeCost() {
+    downBoundary_ = matrix_.MinimizeCost();
 }
 
 std::ostream &operator<<(std::ostream &os, const Node &node) {

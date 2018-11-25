@@ -17,6 +17,8 @@ public:
 
     void AddEdgesFromFileToGraph(unsigned **graph, unsigned graphSize);
 
+    void AddEdgesFromFileToGraph(int **graph, unsigned graphSize);
+
     unsigned GetUnsignedFromFile();
 
 private:

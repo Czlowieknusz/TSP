@@ -36,6 +36,18 @@ void DataLoader::AddEdgesFromFileToGraph(unsigned **graph, const unsigned graphS
     }
 }
 
+void DataLoader::AddEdgesFromFileToGraph(int **graph, const unsigned graphSize) {
+    if (myFile_.is_open()) {
+        for (int i = 0; i < graphSize; ++i) {
+            for (int j = 0; j < graphSize; ++j) {
+                graph[i][j] = GetUnsignedFromFile();
+            }
+        }
+    } else {
+        std::cout << "Couldn't load data." << std::endl;
+    }
+}
+
 unsigned DataLoader::GetUnsignedFromFile() {
     std::getline(myFile_, line_of_file_, ' ');
     return static_cast<unsigned>(std::stoi(line_of_file_));

@@ -18,7 +18,7 @@ public:
 
     Node(Matrix &, unsigned);
 
-    void minimizeCost();
+    void MinimizeCost();
 
     Matrix matrix_;
     unsigned index_, downBoundary_;
