@@ -3,6 +3,8 @@
 //
 
 #include "Node.h"
+#include "NodeLIFO.h"
+
 
 Node::Node() {
 

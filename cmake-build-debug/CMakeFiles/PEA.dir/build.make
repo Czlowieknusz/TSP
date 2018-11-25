@@ -147,22 +147,9 @@ CMakeFiles/PEA.dir/Timer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PEA.dir/Timer.cpp.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Q:\Studia\CLion\PEA---TSP-master\Timer.cpp -o CMakeFiles\PEA.dir\Timer.cpp.s
 
-CMakeFiles/PEA.dir/BranchAndBound.cpp.obj: CMakeFiles/PEA.dir/flags.make
-CMakeFiles/PEA.dir/BranchAndBound.cpp.obj: ../BranchAndBound.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Q:\Studia\CLion\PEA---TSP-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/PEA.dir/BranchAndBound.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PEA.dir\BranchAndBound.cpp.obj -c Q:\Studia\CLion\PEA---TSP-master\BranchAndBound.cpp
-
-CMakeFiles/PEA.dir/BranchAndBound.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PEA.dir/BranchAndBound.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Q:\Studia\CLion\PEA---TSP-master\BranchAndBound.cpp > CMakeFiles\PEA.dir\BranchAndBound.cpp.i
-
-CMakeFiles/PEA.dir/BranchAndBound.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PEA.dir/BranchAndBound.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Q:\Studia\CLion\PEA---TSP-master\BranchAndBound.cpp -o CMakeFiles\PEA.dir\BranchAndBound.cpp.s
-
 CMakeFiles/PEA.dir/Node.cpp.obj: CMakeFiles/PEA.dir/flags.make
 CMakeFiles/PEA.dir/Node.cpp.obj: ../Node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Q:\Studia\CLion\PEA---TSP-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/PEA.dir/Node.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Q:\Studia\CLion\PEA---TSP-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/PEA.dir/Node.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PEA.dir\Node.cpp.obj -c Q:\Studia\CLion\PEA---TSP-master\Node.cpp
 
 CMakeFiles/PEA.dir/Node.cpp.i: cmake_force
@@ -175,7 +162,7 @@ CMakeFiles/PEA.dir/Node.cpp.s: cmake_force
 
 CMakeFiles/PEA.dir/Matrix.cpp.obj: CMakeFiles/PEA.dir/flags.make
 CMakeFiles/PEA.dir/Matrix.cpp.obj: ../Matrix.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Q:\Studia\CLion\PEA---TSP-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/PEA.dir/Matrix.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Q:\Studia\CLion\PEA---TSP-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/PEA.dir/Matrix.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PEA.dir\Matrix.cpp.obj -c Q:\Studia\CLion\PEA---TSP-master\Matrix.cpp
 
 CMakeFiles/PEA.dir/Matrix.cpp.i: cmake_force
@@ -186,6 +173,19 @@ CMakeFiles/PEA.dir/Matrix.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PEA.dir/Matrix.cpp.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Q:\Studia\CLion\PEA---TSP-master\Matrix.cpp -o CMakeFiles\PEA.dir\Matrix.cpp.s
 
+CMakeFiles/PEA.dir/NodeLIFO.cpp.obj: CMakeFiles/PEA.dir/flags.make
+CMakeFiles/PEA.dir/NodeLIFO.cpp.obj: ../NodeLIFO.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=Q:\Studia\CLion\PEA---TSP-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/PEA.dir/NodeLIFO.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PEA.dir\NodeLIFO.cpp.obj -c Q:\Studia\CLion\PEA---TSP-master\NodeLIFO.cpp
+
+CMakeFiles/PEA.dir/NodeLIFO.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PEA.dir/NodeLIFO.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E Q:\Studia\CLion\PEA---TSP-master\NodeLIFO.cpp > CMakeFiles\PEA.dir\NodeLIFO.cpp.i
+
+CMakeFiles/PEA.dir/NodeLIFO.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PEA.dir/NodeLIFO.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S Q:\Studia\CLion\PEA---TSP-master\NodeLIFO.cpp -o CMakeFiles\PEA.dir\NodeLIFO.cpp.s
+
 # Object files for target PEA
 PEA_OBJECTS = \
 "CMakeFiles/PEA.dir/main.cpp.obj" \
@@ -195,9 +195,9 @@ PEA_OBJECTS = \
 "CMakeFiles/PEA.dir/BruteForce.cpp.obj" \
 "CMakeFiles/PEA.dir/Test.cpp.obj" \
 "CMakeFiles/PEA.dir/Timer.cpp.obj" \
-"CMakeFiles/PEA.dir/BranchAndBound.cpp.obj" \
 "CMakeFiles/PEA.dir/Node.cpp.obj" \
-"CMakeFiles/PEA.dir/Matrix.cpp.obj"
+"CMakeFiles/PEA.dir/Matrix.cpp.obj" \
+"CMakeFiles/PEA.dir/NodeLIFO.cpp.obj"
 
 # External object files for target PEA
 PEA_EXTERNAL_OBJECTS =
@@ -209,9 +209,9 @@ PEA.exe: CMakeFiles/PEA.dir/HeldKarp.cpp.obj
 PEA.exe: CMakeFiles/PEA.dir/BruteForce.cpp.obj
 PEA.exe: CMakeFiles/PEA.dir/Test.cpp.obj
 PEA.exe: CMakeFiles/PEA.dir/Timer.cpp.obj
-PEA.exe: CMakeFiles/PEA.dir/BranchAndBound.cpp.obj
 PEA.exe: CMakeFiles/PEA.dir/Node.cpp.obj
 PEA.exe: CMakeFiles/PEA.dir/Matrix.cpp.obj
+PEA.exe: CMakeFiles/PEA.dir/NodeLIFO.cpp.obj
 PEA.exe: CMakeFiles/PEA.dir/build.make
 PEA.exe: CMakeFiles/PEA.dir/linklibs.rsp
 PEA.exe: CMakeFiles/PEA.dir/objects1.rsp

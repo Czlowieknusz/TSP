@@ -6,28 +6,8 @@
 
 #IncludeRegexTransform: 
 
-Q:/Studia/CLion/PEA---TSP-master/AlgorithmTSP.h
-DataLoader.h
-Q:/Studia/CLion/PEA---TSP-master/DataLoader.h
-iostream
--
-vector
--
-
-Q:/Studia/CLion/PEA---TSP-master/BruteForce.h
-AlgorithmTSP.h
-Q:/Studia/CLion/PEA---TSP-master/AlgorithmTSP.h
-vector
--
-
 Q:/Studia/CLion/PEA---TSP-master/DataLoader.h
 fstream
--
-
-Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
-AlgorithmTSP.h
-Q:/Studia/CLion/PEA---TSP-master/AlgorithmTSP.h
-limits
 -
 
 Q:/Studia/CLion/PEA---TSP-master/Matrix.cpp
@@ -35,6 +15,8 @@ Matrix.h
 Q:/Studia/CLion/PEA---TSP-master/Matrix.h
 Node.h
 Q:/Studia/CLion/PEA---TSP-master/Node.h
+NodeLIFO.h
+Q:/Studia/CLion/PEA---TSP-master/NodeLIFO.h
 limits
 -
 tree_util.hh
@@ -45,6 +27,8 @@ memory.h
 -
 DataLoader.h
 Q:/Studia/CLion/PEA---TSP-master/DataLoader.h
+Timer.h
+Q:/Studia/CLion/PEA---TSP-master/Timer.h
 
 Q:/Studia/CLion/PEA---TSP-master/Matrix.h
 iostream
@@ -56,32 +40,20 @@ Q:/Studia/CLion/PEA---TSP-master/tree.hh
 fstream
 -
 
-Q:/Studia/CLion/PEA---TSP-master/Menu.cpp
-Menu.h
-Q:/Studia/CLion/PEA---TSP-master/Menu.h
-Test.h
-Q:/Studia/CLion/PEA---TSP-master/Test.h
-Matrix.h
-Q:/Studia/CLion/PEA---TSP-master/Matrix.h
-
-Q:/Studia/CLion/PEA---TSP-master/Menu.h
-BruteForce.h
-Q:/Studia/CLion/PEA---TSP-master/BruteForce.h
-HeldKarp.h
-Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h
-
-Q:/Studia/CLion/PEA---TSP-master/Node.cpp
-Node.h
-Q:/Studia/CLion/PEA---TSP-master/Node.h
-
 Q:/Studia/CLion/PEA---TSP-master/Node.h
 iostream
 -
 Matrix.h
 Q:/Studia/CLion/PEA---TSP-master/Matrix.h
 
-Q:/Studia/CLion/PEA---TSP-master/Test.h
-string
+Q:/Studia/CLion/PEA---TSP-master/NodeLIFO.h
+iostream
+-
+Matrix.h
+Q:/Studia/CLion/PEA---TSP-master/Matrix.h
+
+Q:/Studia/CLion/PEA---TSP-master/Timer.h
+windows.h
 -
 
 Q:/Studia/CLion/PEA---TSP-master/tree.hh

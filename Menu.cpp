@@ -60,7 +60,7 @@ void Menu::MainMenu() {
                 std::cout << std::endl;
                 Matrix matrix;
                 matrix.ReadFromFile("tsp_10.txt");
-                matrix.BranchAndBound(0);
+                matrix.BranchAndBoundLC(0);
                 break;
             }
             default:

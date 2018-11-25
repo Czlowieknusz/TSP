@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "Q:/Studia/CLion/PEA---TSP-master/BranchAndBound.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/BranchAndBound.cpp.obj"
   "Q:/Studia/CLion/PEA---TSP-master/BruteForce.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/BruteForce.cpp.obj"
   "Q:/Studia/CLion/PEA---TSP-master/DataLoader.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/DataLoader.cpp.obj"
   "Q:/Studia/CLion/PEA---TSP-master/HeldKarp.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/HeldKarp.cpp.obj"
   "Q:/Studia/CLion/PEA---TSP-master/Matrix.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/Matrix.cpp.obj"
   "Q:/Studia/CLion/PEA---TSP-master/Menu.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/Menu.cpp.obj"
   "Q:/Studia/CLion/PEA---TSP-master/Node.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/Node.cpp.obj"
+  "Q:/Studia/CLion/PEA---TSP-master/NodeLIFO.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/NodeLIFO.cpp.obj"
   "Q:/Studia/CLion/PEA---TSP-master/Test.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/Test.cpp.obj"
   "Q:/Studia/CLion/PEA---TSP-master/Timer.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/Timer.cpp.obj"
   "Q:/Studia/CLion/PEA---TSP-master/main.cpp" "Q:/Studia/CLion/PEA---TSP-master/cmake-build-debug/CMakeFiles/PEA.dir/main.cpp.obj"

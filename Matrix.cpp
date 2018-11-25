@@ -4,11 +4,13 @@
 
 #include "Matrix.h"
 #include "Node.h"
+#include "NodeLIFO.h"
 #include <limits>
 #include "tree_util.hh"
 #include <time.h>
 #include <memory.h>
 #include "DataLoader.h"
+#include "Timer.h"
 
 bool Matrix::seed_ = false;
 using kptree::print_tree_bracketed;
@@ -151,7 +153,66 @@ void Matrix::SubtractFromColumn(unsigned column, int value) {
     }
 }
 
-void Matrix::BranchAndBound(unsigned startVertex) {
+double Matrix::BranchAndBoundLIFO(unsigned startVertex) {
+    Timer timer;
+    timer.StartCounter();
+    Node node(*this, startVertex);
+    node.MinimizeCost();
+    tree<Node> root(node);
+    tree<Node>::iterator currentNode = root.begin();
+    std::vector<Node *> stack;
+    bool isChildAdded;
+    do {
+        isChildAdded = false;
+        unsigned uBuffer;
+        std::vector<bool> visitedNodes = BuildVisited(currentNode, graphSize_);
+        std::vector<unsigned> path = BuildPath(currentNode, uBuffer);
+        for (unsigned i = 0; i < graphSize_; ++i) {
+            if (!visitedNodes[i]) {
+                Node bufferNode(currentNode->matrix_, i);
+                bufferNode.matrix_.SetRow(currentNode->index_);
+                bufferNode.matrix_.SetColumn(i);
+                for (auto &p : path) {
+                    bufferNode.matrix_.SetValue(i, p);
+                }
+                bufferNode.MinimizeCost();
+                bufferNode.downBoundary_ += currentNode->matrix_.GetValue(currentNode->index_, i);
+                bufferNode.downBoundary_ += currentNode->downBoundary_;
+
+                //stack.push_back()
+                root.append_child(currentNode, bufferNode);
+                isChildAdded = true;
+            }
+        }
+        unsigned minimum = std::numeric_limits<unsigned>::max();
+        for (tree<Node>::leaf_iterator iter = root.begin_leaf(); iter != root.end_leaf(); ++iter) {
+            if (iter->downBoundary_ < minimum) {
+                minimum = iter->downBoundary_;
+                currentNode = iter;
+            }
+        }
+    } while (isChildAdded);
+    unsigned downBoundary;
+    std::vector<unsigned> path = BuildPath(currentNode, downBoundary);
+    double measured_time = timer.GetCounter();
+    std::cout << "Measured time is equal to: " << measured_time << "s." << std::endl;
+    std::cout << "Path: ";
+    for (unsigned i = 0; i < path.size(); i++) {
+        std::cout << path[i];
+        if (i < path.size() - 1) {
+            std::cout << " -> ";
+        } else {
+            std::cout << " -> " << startVertex << std::endl;
+        }
+    }
+    downBoundary += graph_[*(path.end() - 1)][startVertex];
+    std::cout << "Optimal path cost is equal to: " << downBoundary << std::endl;
+    return measured_time;
+}
+
+double Matrix::BranchAndBoundLC(unsigned startVertex) {
+    Timer timer;
+    timer.StartCounter();
     Node node(*this, startVertex);
     node.MinimizeCost();
     tree<Node> root(node);
@@ -167,8 +228,8 @@ void Matrix::BranchAndBound(unsigned startVertex) {
                 Node bufferNode(currentNode->matrix_, i);
                 bufferNode.matrix_.SetRow(currentNode->index_);
                 bufferNode.matrix_.SetColumn(i);
-                for (unsigned j = 0; j < path.size(); j++) {
-                    bufferNode.matrix_.SetValue(i, path[j]);
+                for (auto &p : path) {
+                    bufferNode.matrix_.SetValue(i, p);
                 }
                 bufferNode.MinimizeCost();
                 bufferNode.downBoundary_ += currentNode->matrix_.GetValue(currentNode->index_, i);
@@ -188,6 +249,8 @@ void Matrix::BranchAndBound(unsigned startVertex) {
     } while (isChildAdded);
     unsigned downBoundary;
     std::vector<unsigned> path = BuildPath(currentNode, downBoundary);
+    double measured_time = timer.GetCounter();
+    std::cout << "Measured time is equal to: " << measured_time << "s." << std::endl;
     std::cout << "Path: ";
     for (unsigned i = 0; i < path.size(); i++) {
         std::cout << path[i];
@@ -199,6 +262,7 @@ void Matrix::BranchAndBound(unsigned startVertex) {
     }
     downBoundary += graph_[*(path.end() - 1)][startVertex];
     std::cout << "Optimal path cost is equal to: " << downBoundary << std::endl;
+    return measured_time;
 }
 
 std::vector<unsigned> Matrix::BuildPath(tree<Node>::iterator currentNode, unsigned &downBoundary) {

@@ -12,9 +12,15 @@
 
 class Node;
 
+class NodeLIFO;
+
 class Matrix {
 
 public:
+    static bool seed_;
+    unsigned graphSize_;
+    int **graph_;
+
     explicit Matrix(unsigned graphSize = 0);
 
     virtual ~Matrix();
@@ -25,7 +31,9 @@ public:
 
     void ReadFromFile(std::string);
 
-    void BranchAndBound(unsigned);
+    double BranchAndBoundLIFO(unsigned);
+
+    double BranchAndBoundLC(unsigned);
 
     int GetValue(unsigned, unsigned);
 
@@ -34,10 +42,6 @@ public:
     bool ReserveMemoryForGraph(unsigned vNumber = 0);
 
     void DeleteGraph();
-
-    static bool seed_;
-    unsigned graphSize_;
-    int **graph_;
 
     int MinRow(unsigned);
 
@@ -55,7 +59,11 @@ public:
 
     static std::vector<bool> BuildVisited(tree<Node>::iterator, unsigned);
 
+    static std::vector<bool> BuildVisited(std::vector<NodeLIFO>::iterator, std::vector<NodeLIFO> &, unsigned);
+
     static std::vector<unsigned> BuildPath(tree<Node>::iterator, unsigned &);
+
+    static std::vector<unsigned> BuildPath(std::vector<NodeLIFO>::iterator, std::vector<NodeLIFO> &, unsigned &);
 };
 
 
