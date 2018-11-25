@@ -122,6 +122,33 @@ PEA/fast:
 	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/build
 .PHONY : PEA/fast
 
+BranchAndBound.obj: BranchAndBound.cpp.obj
+
+.PHONY : BranchAndBound.obj
+
+# target to build an object file
+BranchAndBound.cpp.obj:
+	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/BranchAndBound.cpp.obj
+.PHONY : BranchAndBound.cpp.obj
+
+BranchAndBound.i: BranchAndBound.cpp.i
+
+.PHONY : BranchAndBound.i
+
+# target to preprocess a source file
+BranchAndBound.cpp.i:
+	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/BranchAndBound.cpp.i
+.PHONY : BranchAndBound.cpp.i
+
+BranchAndBound.s: BranchAndBound.cpp.s
+
+.PHONY : BranchAndBound.s
+
+# target to generate assembly for a file
+BranchAndBound.cpp.s:
+	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/BranchAndBound.cpp.s
+.PHONY : BranchAndBound.cpp.s
+
 BruteForce.obj: BruteForce.cpp.obj
 
 .PHONY : BruteForce.obj
@@ -203,6 +230,33 @@ HeldKarp.cpp.s:
 	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/HeldKarp.cpp.s
 .PHONY : HeldKarp.cpp.s
 
+Matrix.obj: Matrix.cpp.obj
+
+.PHONY : Matrix.obj
+
+# target to build an object file
+Matrix.cpp.obj:
+	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/Matrix.cpp.obj
+.PHONY : Matrix.cpp.obj
+
+Matrix.i: Matrix.cpp.i
+
+.PHONY : Matrix.i
+
+# target to preprocess a source file
+Matrix.cpp.i:
+	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/Matrix.cpp.i
+.PHONY : Matrix.cpp.i
+
+Matrix.s: Matrix.cpp.s
+
+.PHONY : Matrix.s
+
+# target to generate assembly for a file
+Matrix.cpp.s:
+	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/Matrix.cpp.s
+.PHONY : Matrix.cpp.s
+
 Menu.obj: Menu.cpp.obj
 
 .PHONY : Menu.obj
@@ -229,6 +283,33 @@ Menu.s: Menu.cpp.s
 Menu.cpp.s:
 	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/Menu.cpp.s
 .PHONY : Menu.cpp.s
+
+Node.obj: Node.cpp.obj
+
+.PHONY : Node.obj
+
+# target to build an object file
+Node.cpp.obj:
+	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/Node.cpp.obj
+.PHONY : Node.cpp.obj
+
+Node.i: Node.cpp.i
+
+.PHONY : Node.i
+
+# target to preprocess a source file
+Node.cpp.i:
+	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/Node.cpp.i
+.PHONY : Node.cpp.i
+
+Node.s: Node.cpp.s
+
+.PHONY : Node.s
+
+# target to generate assembly for a file
+Node.cpp.s:
+	$(MAKE) -f CMakeFiles\PEA.dir\build.make CMakeFiles/PEA.dir/Node.cpp.s
+.PHONY : Node.cpp.s
 
 Test.obj: Test.cpp.obj
 
@@ -320,6 +401,9 @@ help:
 	@echo ... rebuild_cache
 	@echo ... PEA
 	@echo ... edit_cache
+	@echo ... BranchAndBound.obj
+	@echo ... BranchAndBound.i
+	@echo ... BranchAndBound.s
 	@echo ... BruteForce.obj
 	@echo ... BruteForce.i
 	@echo ... BruteForce.s
@@ -329,9 +413,15 @@ help:
 	@echo ... HeldKarp.obj
 	@echo ... HeldKarp.i
 	@echo ... HeldKarp.s
+	@echo ... Matrix.obj
+	@echo ... Matrix.i
+	@echo ... Matrix.s
 	@echo ... Menu.obj
 	@echo ... Menu.i
 	@echo ... Menu.s
+	@echo ... Node.obj
+	@echo ... Node.i
+	@echo ... Node.s
 	@echo ... Test.obj
 	@echo ... Test.i
 	@echo ... Test.s

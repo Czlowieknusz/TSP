@@ -45,7 +45,9 @@ public:
 
     std::vector<Path> paths_;
 
-    std::vector<unsigned> indexesVec;
+    std::vector<unsigned> indexesVec_;
+
+    std::vector<unsigned > calculatedPath_;
 
     void CreatePermutations(unsigned);
 

@@ -84,19 +84,19 @@ double HeldKarp::CalculatePath(unsigned startVertex) {
     unsigned vectorSize = 0;
     for (const auto &permutation_vec : permutations_) {
         if (permutation_vec.empty()) {
-            indexesVec.push_back(0);
+            indexesVec_.push_back(0);
             for (const auto node : listOfEndNodes) {
                 Path path(startVertex, node, graph_[startVertex][node], permutation_vec);
                 paths_.push_back(std::move(path));
             }
         } else if (permutation_vec.size() == graphSize_ - 1) {
-            indexesVec.push_back(paths_.size() - 1);
+            indexesVec_.push_back(paths_.size() - 1);
             ++vectorSize;
             Path path = FindMinCostOfPermutation(startVertex, permutation_vec);
             paths_.push_back(std::move(path));
         } else {
             if (permutation_vec.size() != vectorSize) {
-                indexesVec.push_back(paths_.size() - 1);
+                indexesVec_.push_back(paths_.size() - 1);
                 ++vectorSize;
             }
             for (const auto successor : listOfEndNodes) {
@@ -110,8 +110,13 @@ double HeldKarp::CalculatePath(unsigned startVertex) {
     double measured_time = timer.GetCounter();
     std::cout << "Measured time is equal to: " << measured_time << "s." << std::endl;
     std::cout << "Measured cost is equal to: " << (paths_.end() - 1)->cost_ << std::endl;
+    std::cout << "Path size = " << paths_.size() << std::endl;
     std::cout << startVertex << "; ";
-    PrintOptimalPath(*(paths_.end() - 1), indexesVec.size() - 1);
+    PrintOptimalPath(*(paths_.end() - 1), indexesVec_.size() - 1);
+    for(auto i : calculatedPath_) {
+        std::cout << i << "; ";
+    }
+    std::cout << std::endl;
     return measured_time;
 }
 
@@ -170,20 +175,20 @@ bool HeldKarp::CheckIfCorrectPath(const std::vector<unsigned> &path, const std::
 }
 
 void HeldKarp::PrintOptimalPath(Path &postPath, unsigned indexOfIndexesVec) {
-    if (indexOfIndexesVec == indexesVec.size() - 1) {
-        std::cout << postPath.parentNode_ << "; ";
+    if (indexOfIndexesVec == indexesVec_.size() - 1) {
+        calculatedPath_.push_back(postPath.parentNode_);
         PrintOptimalPath(postPath, indexOfIndexesVec - 1);
     } else if (indexOfIndexesVec == 0) {
         return;
     } else {
-         //   std::cout << "postPath: " << postPath << std::endl;
-        for (unsigned index = indexesVec[indexOfIndexesVec] + 1; index < indexesVec[indexOfIndexesVec + 1]; ++index) {
-           //           std::cout << "Path: " << paths_[index] << std::endl;
+        //   std::cout << "postPath: " << postPath << std::endl;
+        for (unsigned index = indexesVec_[indexOfIndexesVec] + 1; index < indexesVec_[indexOfIndexesVec + 1]; ++index) {
+            //           std::cout << "Path: " << paths_[index] << std::endl;
             if (CheckIfCorrectPath(paths_[index].middleValues_, postPath.middleValues_, paths_[index].successor_)) {
-             //   std::cout << "Jak to?" << std::endl;
+                //   std::cout << "Jak to?" << std::endl;
                 if (paths_[index].successor_ == postPath.parentNode_) {
                     //        std::cout << "postPath: " << postPath << std::endl << "Path: " << paths_[index] << std::endl;
-                    std::cout << paths_[index].parentNode_ << "; ";
+                    calculatedPath_.push_back(paths_[index].parentNode_);
                     PrintOptimalPath(paths_[index], indexOfIndexesVec - 1);
                     return;
                 }

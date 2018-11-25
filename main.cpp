@@ -1,6 +1,6 @@
 #include "Menu.h"
 
 int main() {
-    Menu menu("tsp_12.txt");
+    Menu menu("tsp_10.txt");
     return 0;
 }

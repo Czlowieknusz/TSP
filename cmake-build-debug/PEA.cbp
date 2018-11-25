@@ -83,6 +83,12 @@
 		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/AlgorithmTSP.h">
 			<Option target="PEA"/>
 		</Unit>
+		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/BranchAndBound.cpp">
+			<Option target="PEA"/>
+		</Unit>
+		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/BranchAndBound.h">
+			<Option target="PEA"/>
+		</Unit>
 		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/BruteForce.cpp">
 			<Option target="PEA"/>
 		</Unit>
@@ -101,10 +107,22 @@
 		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/HeldKarp.h">
 			<Option target="PEA"/>
 		</Unit>
+		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/Matrix.cpp">
+			<Option target="PEA"/>
+		</Unit>
+		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/Matrix.h">
+			<Option target="PEA"/>
+		</Unit>
 		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/Menu.cpp">
 			<Option target="PEA"/>
 		</Unit>
 		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/Menu.h">
+			<Option target="PEA"/>
+		</Unit>
+		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/Node.cpp">
+			<Option target="PEA"/>
+		</Unit>
+		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/Node.h">
 			<Option target="PEA"/>
 		</Unit>
 		<Unit filename="Q:/Studia/CLion/PEA---TSP-master/Test.cpp">
